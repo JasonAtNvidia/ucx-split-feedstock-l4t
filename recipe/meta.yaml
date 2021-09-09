@@ -23,8 +23,6 @@ source:
   - git_url: https://github.com/openucx/ucx
     git_rev: {{ ucx_commit }}
     folder: ucx
-    patches:
-      - cuda-alloc-rcache.patch  # [cuda_compiler_version != "None"]
   - git_url: https://github.com/rapidsai/ucx-py
     git_rev: {{ ucx_py_commit }}
     folder: ucx-py
