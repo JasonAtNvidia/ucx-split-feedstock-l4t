@@ -7,10 +7,10 @@ CONDA_USERNAME:
   - rapidsai
 
 UCX_VER:
-  - 1.9.0
+  - 1.11.1
 
 UCX_COMMIT:
-  - v1.9.0
+  - v1.11.1
 
 UCX_PROC_VER:
   - 1.0.0
