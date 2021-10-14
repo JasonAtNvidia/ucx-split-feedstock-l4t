@@ -42,8 +42,19 @@ conda info
 conda config --show-sources
 conda list --show-channel-urls
 
+# Get arch
+ARCH="$(arch)"
+if [ "$ARCH" = "x86_64" ]; then
+  CONDA_ARCH="linux_64"
+elif [ "${ARCH}" = "aarch64" ]; then
+  CONDA_ARCH="linux_aarch64"
+else
+  echo "Unsupported arch ${ARCH}"
+  exit 1
+fi
+
 # Add settings for current CUDA version
-cat .ci_support/linux_64_cuda_compiler_version${CUDA_VER}.yaml > recipe/conda_build_config.yaml
+cat ".ci_support/${CONDA_ARCH}_cuda_compiler_version${CUDA_VER}.yaml" > recipe/conda_build_config.yaml
 
 # Allow insecure files to work with out conda mirror/proxy
 echo "ssl_verify: false" >> /opt/conda/.condarc
