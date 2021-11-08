@@ -1,0 +1,32 @@
+FROM_IMAGE:
+  - quay.io/condaforge/linux-anvil-aarch64
+  - gpuci/linux-anvil-aarch64-cuda
+
+CONDA_USERNAME:
+  - rapidsai
+
+UCX_VER:
+  - 1.11.1
+
+UCX_COMMIT:
+  - v1.11.1
+
+UCX_PROC_VER:
+  - 1.0.0
+
+UCX_PY_COMMIT:
+  - main
+
+CUDA_VER:
+  - 11.4
+  - 11.2
+  - None
+
+exclude:
+  - FROM_IMAGE: quay.io/condaforge/linux-anvil-aarch64
+    CUDA_VER: 11.4
+  - FROM_IMAGE: quay.io/condaforge/linux-anvil-aarch64
+    CUDA_VER: 11.2
+
+  - FROM_IMAGE: gpuci/linux-anvil-aarch64-cuda
+    CUDA_VER: None
