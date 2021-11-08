@@ -19,11 +19,14 @@ UCX_PY_COMMIT:
   - branch-0.23
 
 CUDA_VER:
+  - 11.5
   - 11.4
   - 11.2
   - None
 
 exclude:
+  - FROM_IMAGE: quay.io/condaforge/linux-anvil-aarch64
+    CUDA_VER: 11.5
   - FROM_IMAGE: quay.io/condaforge/linux-anvil-aarch64
     CUDA_VER: 11.4
   - FROM_IMAGE: quay.io/condaforge/linux-anvil-aarch64
