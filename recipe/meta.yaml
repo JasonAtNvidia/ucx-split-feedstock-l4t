@@ -31,7 +31,7 @@ build:
   skip: true  # [not linux]
   skip: true  # [cuda_compiler_version == "9.2"]
   skip: true  # [cuda_compiler_version == "10.0"]
-  number: 0
+  number: 1
   script_env:
     - UCX_VER
     - UCX_COMMIT
