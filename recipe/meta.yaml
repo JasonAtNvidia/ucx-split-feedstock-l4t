@@ -1,16 +1,17 @@
 #### START - Config version naming (right side is default value)
-{% set ucx_version = environ.get("UCX_VER", "v1.11.1").lstrip('v').replace("-", "") %}
+{% set ucx_version = environ.get("UCX_VER", "v1.11.2").lstrip('v').replace("-", "") %}
 {% set ucx_number = environ.get("UCX_BUILD_NUMBER", 0) %}
 {% set ucx_proc_version = environ.get("UCX_PROC_VER", "1.0.0") %}
-{% set ucx_py_version = environ.get("UCX_PY_VER", "0.22").lstrip('v') + environ.get('VERSION_SUFFIX', '') %}
+{% set ucx_py_version = environ.get("UCX_PY_VER", "0.23").lstrip('v') + environ.get('VERSION_SUFFIX', '') %}
 {% set ucx_py_number = environ.get("UCX_PY_BUILD_NUMBER", 0) %}
 {% set cuda_version = '.'.join(environ.get('CUDA_VER', '11.2').split('.')[:2]) %}
 {% set py_version = environ.get('CONDA_PY', '38') %}
 #### END - Config version naming
 
 #### START - Config source commits (right side is default value)
-{% set ucx_commit = environ.get("UCX_COMMIT", "c58db6b") %}
+{% set ucx_commit = environ.get("UCX_COMMIT", "ef2bbcf") %}
 {% set ucx_py_commit = environ.get("UCX_PY_COMMIT", "9c11581") %}
+{% set ucx_py_commit = environ.get("UCX_PY_COMMIT", "99b672d") %}
 #### END - Config source commits
 
 {% set ucx_proc_type = "cpu" if cuda_compiler_version == "None" else "gpu" %}
