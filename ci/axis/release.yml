@@ -7,10 +7,10 @@ CONDA_USERNAME:
   - rapidsai
 
 UCX_VER:
-  - 1.11.1
+  - 1.11.2
 
 UCX_COMMIT:
-  - v1.11.1
+  - v1.11.2
 
 UCX_PROC_VER:
   - 1.0.0
@@ -19,7 +19,6 @@ UCX_PY_COMMIT:
   - main
 
 CUDA_VER:
-  - 11.4
   - 11.2
   - 11.0
   - 10.2
@@ -27,8 +26,6 @@ CUDA_VER:
   - None
 
 exclude:
-  - FROM_IMAGE: quay.io/condaforge/linux-anvil-comp7
-    CUDA_VER: 11.4
   - FROM_IMAGE: quay.io/condaforge/linux-anvil-comp7
     CUDA_VER: 11.2
   - FROM_IMAGE: quay.io/condaforge/linux-anvil-comp7
@@ -40,8 +37,6 @@ exclude:
 
   - FROM_IMAGE: quay.io/condaforge/linux-anvil-cuda
     CUDA_VER: None
-  - FROM_IMAGE: quay.io/condaforge/linux-anvil-cuda
-    CUDA_VER: 11.4
 
   - FROM_IMAGE: gpuci/linux-anvil-cuda
     CUDA_VER: 11.2
