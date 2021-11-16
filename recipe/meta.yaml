@@ -5,6 +5,7 @@
 {% set ucx_py_version = environ.get("UCX_PY_VER", "0.23").lstrip('v') + environ.get('VERSION_SUFFIX', '') %}
 {% set ucx_py_number = environ.get("UCX_PY_BUILD_NUMBER", 0) %}
 {% set cuda_version = '.'.join(environ.get('CUDA_VER', '11.2').split('.')[:2]) %}
+{% set cuda_major=cuda_version.split('.')[0] %}
 {% set py_version = environ.get('CONDA_PY', '38') %}
 #### END - Config version naming
 
@@ -62,7 +63,7 @@ outputs:
 
     build:
       number: {{ ucx_number }}
-      string: cuda{{ cuda_version }}_{{ ucx_number }} # [cuda_compiler_version != "None"]
+      string: cuda{{ cuda_major }}_{{ ucx_number }} # [cuda_compiler_version != "None"]
       script_env:
         - CUDA_HOME # [cuda_compiler_version != "None"]
     requirements:
