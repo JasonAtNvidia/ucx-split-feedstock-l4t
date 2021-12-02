@@ -36,7 +36,7 @@ if [ "$CUDA_VER" != "None" ] ; then
   MORE_PKGS="${MORE_PKGS} cudatoolkit=${CUDA_VER}"
 fi
 
-conda install -y -k -c nvidia -c conda-forge -c defaults conda-verify "${MORE_PKGS}"
+conda install -y -k -c nvidia -c conda-forge -c defaults conda-verify ${MORE_PKGS}
 
 # Print diagnostic information
 gpuci_logger "Print conda info..."
