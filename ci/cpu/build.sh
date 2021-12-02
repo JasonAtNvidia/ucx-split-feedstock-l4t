@@ -30,6 +30,7 @@ xargs yum -y install < recipe/yum_requirements.txt
 
 # Fetch pkgs for build
 gpuci_logger "Install conda pkgs needed for build..."
+conda install -y "conda-build >=3.21.6" # Previous versions of conda-build cause a build error. See https://github.com/conda-forge/conda-build-feedstock/pull/169
 if [ "$CUDA_VER" != "None" ] ; then
   conda install -y -k -c nvidia -c conda-forge -c defaults conda-verify cudatoolkit=$CUDA_VER
 else
