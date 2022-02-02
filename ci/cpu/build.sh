@@ -24,6 +24,19 @@ cd ~
 gpuci_logger "Copy workspace from volume to home for work..."
 cp -rT $WORKSPACE ~
 
+# Get arch
+ARCH="$(arch)"
+if [ "$ARCH" = "x86_64" ]; then
+  CONDA_ARCH="linux_64"
+elif [ "${ARCH}" = "aarch64" ]; then
+  CONDA_ARCH="linux_aarch64"
+  sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-Linux-* \
+    && sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-Linux-* 
+else
+  echo "Unsupported arch ${ARCH}"
+  exit 1
+fi
+
 # Install yum reqs
 gpuci_logger "Install system libraries needed for build..."
 xargs yum -y install < recipe/yum_requirements.txt
@@ -43,17 +56,6 @@ gpuci_logger "Print conda info..."
 conda info
 conda config --show-sources
 conda list --show-channel-urls
-
-# Get arch
-ARCH="$(arch)"
-if [ "$ARCH" = "x86_64" ]; then
-  CONDA_ARCH="linux_64"
-elif [ "${ARCH}" = "aarch64" ]; then
-  CONDA_ARCH="linux_aarch64"
-else
-  echo "Unsupported arch ${ARCH}"
-  exit 1
-fi
 
 # Add settings for current CUDA version
 cat ".ci_support/${CONDA_ARCH}_cuda_compiler_version${CUDA_VER}.yaml" > recipe/conda_build_config.yaml
