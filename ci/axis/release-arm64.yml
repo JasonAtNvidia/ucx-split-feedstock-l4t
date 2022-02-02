@@ -1,6 +1,6 @@
 FROM_IMAGE:
   - quay.io/condaforge/linux-anvil-aarch64
-  - gpuci/linux-anvil-aarch64-cuda
+  - quay.io/condaforge/linux-anvil-aarch64-cuda
 
 CONDA_USERNAME:
   - rapidsai
@@ -25,5 +25,5 @@ exclude:
   - FROM_IMAGE: quay.io/condaforge/linux-anvil-aarch64
     CUDA_VER: 11.2
 
-  - FROM_IMAGE: gpuci/linux-anvil-aarch64-cuda
+  - FROM_IMAGE: quay.io/condaforge/linux-anvil-aarch64-cuda
     CUDA_VER: None
