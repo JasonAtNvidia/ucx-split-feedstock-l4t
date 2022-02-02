@@ -25,8 +25,8 @@ gpuci_logger "Copy workspace from volume to home for work..."
 cp -rT $WORKSPACE ~
 
 # Install yum reqs
-gpuci_logger "Install system libraries needed for build..."
-xargs yum -y install < recipe/yum_requirements.txt
+#gpuci_logger "Install system libraries needed for build..."
+#xargs yum -y install < recipe/yum_requirements.txt
 
 # Fetch pkgs for build
 gpuci_logger "Install conda pkgs needed for build..."
