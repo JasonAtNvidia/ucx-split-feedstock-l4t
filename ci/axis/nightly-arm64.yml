@@ -15,8 +15,8 @@ UCX_PROC_VER:
   - 1.0.0
 
 UCX_PY_COMMIT:
-  - branch-0.24
   - branch-0.25
+  - branch-0.26
 
 CUDA_VER:
   - 11.2
