@@ -42,7 +42,7 @@ build:
     - UCX_PY_BUILD_NUMBER
 
 outputs:
-  - name: ucx-proc
+  - name: ucx-proc-l4t
     version: {{ ucx_proc_version }}
     build:
       number: 0
@@ -56,7 +56,7 @@ outputs:
       license_family: BSD
       summary: A meta-package to select CPU or GPU UCX build.
 
-  - name: ucx
+  - name: ucx-l4t
     version: "{{ ucx_version }}+g{{ ucx_commit }}"
 
     build:
@@ -68,7 +68,6 @@ outputs:
       build:
         - {{ compiler("c") }}
         - {{ compiler("cxx") }}
-        - {{ compiler("cuda") }}         # [cuda_compiler_version != "None"]
         - {{ cdt("numactl-devel") }}
         - automake
         - autoconf
@@ -78,7 +77,7 @@ outputs:
         - pkg-config
       host:
       run_constrained:
-        - ucx-proc * {{ ucx_proc_type }}
+        - ucx-proc-l4t * {{ ucx_proc_type }}
     script: install_ucx.sh
     test:
       commands:
@@ -92,7 +91,7 @@ outputs:
       license_file: ucx/LICENSE
       summary: Unified Communication X.
 
-  - name: ucx-py
+  - name: ucx-py-l4t
     version: "{{ ucx_py_version }}"
     build:
       number: {{ ucx_py_number }}
@@ -101,26 +100,23 @@ outputs:
       skip: true                         # [cuda_compiler_version != "None"]
       script_env:
         - CUDA_HOME                      # [cuda_compiler_version != "None"]
-      ignore_run_exports:
-        - cudatoolkit                    # [cuda_compiler_version != "None"]
 
     requirements:
       build:
         - {{ compiler("c") }}
         - {{ compiler("cxx") }}
-        - {{ compiler("cuda") }}         # [cuda_compiler_version != "None"]
         - {{ cdt("numactl") }}
       host:
         - python
         - pip
         - cython >=0.29.14,<3.0.0a0
         - libhwloc >=2.3.0,<2.4.0a0
-        - ucx
+        - ucx-l4t
       run:
         - python
         - numpy
         - psutil
-        - ucx {{ ucx_version }}+g{{ ucx_commit }}
+        - ucx-l4t {{ ucx_version }}+g{{ ucx_commit }}
     script: install_ucx-py.sh
     about:
       home: https://github.com/rapidsai/ucx-py
